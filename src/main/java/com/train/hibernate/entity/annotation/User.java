@@ -18,7 +18,7 @@ import org.hibernate.annotations.OptimisticLocking;
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE,include="non-lazy")
 @NamedQuery(name="com.train.hibernate.entity.annotation.User.selectUserbyId",query="from User where id=:id")
-@NamedNativeQuery(name="selectUserSqlsss",query="select * from user where id=:id")
+
 @OptimisticLocking()
 public class User {
 	@Version

@@ -28,9 +28,13 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		
 		<mapping class="com.train.hibernate.entity.annotation.User" /> 
-		<mapping class="com.train.hibernate.entity.annotation.CommUser" /> 
-		
+		<mapping class="com.train.hibernate.entity.annotation.Department" />
+		<mapping class="com.train.hibernate.entity.annotation.Employee" />
+		<mapping class="com.train.hibernate.entity.annotation.Student" />
+		<mapping class="com.train.hibernate.entity.annotation.Teacher" />
 		<!--  
+		
+		<mapping class="com.train.hibernate.entity.annotation.CommUser" /> 
 		<mapping resource="com/train/hibernate/entity/xml/User.hbm.xml"/>	
 		<mapping resource="com/train/hibernate/entity/xml/CommUser.hbm.xml"/>
 		<mapping resource="com/train/hibernate/domain/Emp.hbm.xml"/>		

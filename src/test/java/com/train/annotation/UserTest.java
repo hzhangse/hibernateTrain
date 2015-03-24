@@ -193,4 +193,27 @@ public class UserTest {
 
 	}
 
+	@Test
+	public void testListEhcache() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		List<User> users1 = (List<User>) session.createQuery("from User")
+				.setCacheable(true).list();
+		for (User user : users1) {
+			System.out.println(user.getName());
+		}
+		session.getTransaction().commit();
+		session.close();
+
+		Session session2 = sessionFactory.openSession();
+		session2.beginTransaction();
+		List<User> users2 = (List<User>) session2.createQuery("from User")
+				.setCacheable(true).list();
+		for (User user : users2) {
+			System.out.println(user.getName());
+		}
+		session2.getTransaction().commit();
+		session2.close();
+	}
+
 }

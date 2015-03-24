@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.train.hibernate.entity.xml">
+
+	<class name="User" optimistic-lock="version" table="User1">
+	<cache usage="read-write"/>  
+		<id name="id">
+			<generator class="hilo" />
+		</id>
+		<version name="version"></version>
+		<property name="name"></property>
+		<property name="date"></property>
+		<query name="selectUserbyId">
+		<![CDATA[from User where id=:id]]>
+		</query>
+	</class>
+	<sql-query name="selectUserSql">
+	<![CDATA[select * from user]]>
+	</sql-query>
+
+
+</hibernate-mapping>

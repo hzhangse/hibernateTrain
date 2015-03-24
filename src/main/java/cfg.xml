@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory >
+	<!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
+		<property name="hibernate.connection.driver_class">com.p6spy.engine.spy.P6SpyDriver</property> 
+		<property name="hibernate.connection.url">jdbc:p6spy:mysql://localhost:3306/class4</property>
+		
+		<property name="hibernate.cache.use_second_level_cache">true</property>		
+		<!-- hibernate4的二级缓存配置 -->  
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> 
+		
+		<!-- 开启查询缓存 -->  
+        <property name="hibernate.cache.use_query_cache">true</property>  
+		
+		<!-- hibernate3的二级缓存配置 -->  
+        <!-- <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property> -->  
+		<!--  <property name="hibernate.cache.provider_class">org.hibernate.cache.OSCacheProvider</property>-->
+		<property name="hibernate.generate_statistics">true</property>
+		<property name="current_session_context_class">thread</property>
+		
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		
+		<mapping class="com.train.hibernate.entity.annotation.User" /> 
+		<mapping class="com.train.hibernate.entity.annotation.CommUser" /> 
+		
+		<!--  
+		<mapping resource="com/train/hibernate/entity/xml/User.hbm.xml"/>	
+		<mapping resource="com/train/hibernate/entity/xml/CommUser.hbm.xml"/>
+		<mapping resource="com/train/hibernate/domain/Emp.hbm.xml"/>		
+		<mapping resource="com/train/hibernate/domain/Dept.hbm.xml"/>	
+		<mapping resource="com/train/hibernate/domain/Teacher.hbm.xml"/>		
+		<mapping resource="com/train/hibernate/domain/Student.hbm.xml"/>		
+		-->			
+	</session-factory>
+</hibernate-configuration>

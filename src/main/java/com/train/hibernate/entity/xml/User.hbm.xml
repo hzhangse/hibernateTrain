@@ -2,9 +2,9 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.train.hibernate.entity.xml">
+<hibernate-mapping package="com.train.hibernate.entity.annotation">
 
-	<class name="User" optimistic-lock="version" table="User1">
+	<class name="User" optimistic-lock="version" table="User">
 	<cache usage="read-write"/>  
 		<id name="id">
 			<generator class="hilo" />

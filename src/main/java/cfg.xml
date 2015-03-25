@@ -6,8 +6,9 @@
 	<session-factory >
 	<!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
 		<property name="hibernate.connection.driver_class">com.p6spy.engine.spy.P6SpyDriver</property> 
-		<property name="hibernate.connection.url">jdbc:p6spy:mysql://localhost:3306/class4</property>
-		
+		<property name="hibernate.connection.url">jdbc:p6spy:mysql://localhost:3306/class4?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="connection.useUnicode">true</property> 
+		<property name="connection.characterEncoding">UTF-8</property> 
 		<property name="hibernate.cache.use_second_level_cache">true</property>		
 		<!-- hibernate4的二级缓存配置 -->  
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> 
@@ -27,13 +28,25 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		
+		
+		<mapping class="com.train.hibernate.entity.annotation.Person" />
+		<mapping class="com.train.hibernate.entity.annotation.IdCard" />
 		<mapping class="com.train.hibernate.entity.annotation.User" /> 
 		<mapping class="com.train.hibernate.entity.annotation.Department" />
 		<mapping class="com.train.hibernate.entity.annotation.Employee" />
 		<mapping class="com.train.hibernate.entity.annotation.Student" />
 		<mapping class="com.train.hibernate.entity.annotation.Teacher" />
+		<mapping class="com.train.hibernate.entity.annotation.CommUser" /> 
 		<!--  
-		
+		<mapping resource="com/train/hibernate/entity/xml/Person.hbm.xml"/>	
+		<mapping resource="com/train/hibernate/entity/xml/IdCard.hbm.xml"/>
+		<mapping class="com.train.hibernate.entity.annotation.People" />
+		<mapping class="com.train.hibernate.entity.annotation.IdCard" />
+		<mapping class="com.train.hibernate.entity.annotation.User" /> 
+		<mapping class="com.train.hibernate.entity.annotation.Department" />
+		<mapping class="com.train.hibernate.entity.annotation.Employee" />
+		<mapping class="com.train.hibernate.entity.annotation.Student" />
+		<mapping class="com.train.hibernate.entity.annotation.Teacher" />
 		<mapping class="com.train.hibernate.entity.annotation.CommUser" /> 
 		<mapping resource="com/train/hibernate/entity/xml/User.hbm.xml"/>	
 		<mapping resource="com/train/hibernate/entity/xml/CommUser.hbm.xml"/>
@@ -41,6 +54,10 @@
 		<mapping resource="com/train/hibernate/domain/Dept.hbm.xml"/>	
 		<mapping resource="com/train/hibernate/domain/Teacher.hbm.xml"/>		
 		<mapping resource="com/train/hibernate/domain/Student.hbm.xml"/>		
-		-->			
+		<event type="save">
+			<listener class="com.train.hibernate.event.SaveUserListener" />
+		</event>	
+		-->	
+			
 	</session-factory>
 </hibernate-configuration>

@@ -76,7 +76,8 @@ public class ManyToOneTest {
 	public static void main(String[] args) {
 		add();
 		query(32768);
-		query2(32768);
+		//query2(32768);
+		HibernateUtils.getSessionFactory().close();
 	}
 
 }
